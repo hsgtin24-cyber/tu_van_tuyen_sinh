@@ -3,88 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ thống Tư vấn Tuyển sinh AI</title>
-    <!-- Thư viện CSS Bootstrap -->
+    <title>Hệ thống Tư vấn Tuyển sinh Đa Phương Thức</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background-color: #f4f7f6; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, sans-serif; }
         .result-card { min-height: 150px; margin-bottom: 20px; }
-        .chat-box { height: 300px; overflow-y: auto; background: #fff; border: 1px solid #ccc; padding: 15px; border-radius: 5px; margin-bottom: 15px;}
-        .user-msg { background: #0d6efd; color: white; padding: 10px 15px; border-radius: 15px 15px 0 15px; margin-bottom: 10px; width: fit-content; margin-left: auto; max-width: 80%;}
-        .ai-msg { background: #e9ecef; color: black; padding: 10px 15px; border-radius: 15px 15px 15px 0; margin-bottom: 10px; width: fit-content; max-width: 80%; line-height: 1.5;}
-        .loading { font-style: italic; color: gray; font-size: 0.9em; display: none; margin-bottom: 10px;}
+        .method-badge { font-size: 0.8rem; padding: 4px 8px; border-radius: 12px; margin-top: 5px; display: inline-block; }
+        .badge-hocba { background-color: #e3f2fd; color: #0d6efd; border: 1px solid #0d6efd;}
+        .badge-dgnl { background-color: #fff3cd; color: #856404; border: 1px solid #ffc107;}
+        .badge-ielts { background-color: #d1e7dd; color: #0f5132; border: 1px solid #198754;}
+        .chat-box { height: 250px; overflow-y: auto; background: #fff; border: 1px solid #ccc; padding: 15px; border-radius: 5px;}
+        .user-msg { background: #0d6efd; color: white; padding: 10px; border-radius: 10px; margin-bottom: 10px; text-align: right; width: fit-content; margin-left: auto;}
+        .ai-msg { background: #f8f9fa; color: black; padding: 10px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #dee2e6; width: fit-content;}
     </style>
 </head>
 <body>
 
-<div class="container py-5">
-    <h1 class="text-center mb-4 text-primary fw-bold">HỆ THỐNG CỐ VẤN TUYỂN SINH AI</h1>
+<div class="container py-4">
+    <h2 class="text-center mb-4 text-primary fw-bold">CHUYÊN GIA HOẠCH ĐỊNH XÉT TUYỂN ĐẠI HỌC AI</h2>
     
-    <!-- KHU VỰC 1: NHẬP ĐIỂM -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-header bg-primary text-white fw-bold">1. Nhập Điểm Học Bạ / Thi Thử</div>
-        <div class="card-body">
-            <div class="row g-3">
-                <div class="col-md-2 col-4"><label>Toán</label><input type="number" id="toan" class="form-control" placeholder="VD: 8.5"></div>
-                <div class="col-md-2 col-4"><label>Vật Lý</label><input type="number" id="ly" class="form-control"></div>
-                <div class="col-md-2 col-4"><label>Hóa Học</label><input type="number" id="hoa" class="form-control"></div>
-                <div class="col-md-2 col-4"><label>Sinh Học</label><input type="number" id="sinh" class="form-control"></div>
-                <div class="col-md-2 col-4"><label>Ngữ Văn</label><input type="number" id="van" class="form-control"></div>
-                <div class="col-md-2 col-4"><label>Tiếng Anh</label><input type="number" id="anh" class="form-control"></div>
-            </div>
-            <button class="btn btn-success mt-4 w-100 fw-bold" onclick="phanTichDiem()">PHÂN TÍCH CHIẾN LƯỢC TỐI ƯU</button>
-        </div>
-    </div>
+    <div class="row">
+        <!-- CỘT NHẬP LIỆU -->
+        <div class="col-lg-5">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white fw-bold">1. Thông tin Hồ sơ (Nhập các mục bạn có)</div>
+                <div class="card-body">
+                    <h6 class="text-primary border-bottom pb-2">📌 Điểm Học Bạ / Thi THPT</h6>
+                    <div class="row g-2 mb-3">
+                        <div class="col-4"><label class="small">Toán</label><input type="number" id="toan" class="form-control form-control-sm"></div>
+                        <div class="col-4"><label class="small">Vật Lý</label><input type="number" id="ly" class="form-control form-control-sm"></div>
+                        <div class="col-4"><label class="small">Hóa Học</label><input type="number" id="hoa" class="form-control form-control-sm"></div>
+                        <div class="col-4"><label class="small">Sinh Học</label><input type="number" id="sinh" class="form-control form-control-sm"></div>
+                        <div class="col-4"><label class="small">Ngữ Văn</label><input type="number" id="van" class="form-control form-control-sm"></div>
+                        <div class="col-4"><label class="small">Tiếng Anh</label><input type="number" id="anh" class="form-control form-control-sm"></div>
+                    </div>
+                    
+                    <h6 class="text-warning border-bottom pb-2">📌 Điểm Đánh Giá Năng Lực</h6>
+                    <div class="mb-3">
+                        <input type="number" id="dgnl" class="form-control form-control-sm" placeholder="Nhập điểm ĐGNL (Ví dụ: 850)">
+                    </div>
 
-    <!-- KHU VỰC 2: KẾT QUẢ PHÂN TÍCH (Ẩn mặc định) -->
-    <div id="result-section" style="display: none;">
-        <div class="alert alert-info text-center shadow-sm">
-            <h4 class="mb-2">Hệ thống phát hiện bạn có thế mạnh nhất ở khối: <strong class="text-danger fs-3" id="khoi-toi-uu"></strong></h4>
-            <p class="mb-0 fs-5">Tổng điểm khối này là: <strong class="text-danger" id="tong-diem-hien-thi"></strong></p>
+                    <h6 class="text-success border-bottom pb-2">📌 Chứng chỉ Ngoại ngữ</h6>
+                    <div class="mb-3">
+                        <input type="number" id="ielts" step="0.5" class="form-control form-control-sm" placeholder="Nhập band điểm IELTS (Ví dụ: 6.5)">
+                    </div>
+
+                    <button class="btn btn-primary w-100 fw-bold" onclick="phanTichDiem()">TÌM KIẾM CƠ HỘI ĐỖ ĐẠI HỌC</button>
+                </div>
+            </div>
+
+            <!-- CHATBOT -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white fw-bold">Trợ lý Luật Tuyển sinh</div>
+                <div class="card-body p-2">
+                    <div id="chatBox" class="chat-box mb-2">
+                        <div class="ai-msg">Bạn cần hỏi luật quy đổi IELTS hay cộng điểm khu vực không?</div>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="chatInput" class="form-control form-control-sm" placeholder="Nhập câu hỏi...">
+                        <button class="btn btn-sm btn-dark" onclick="guiTinNhanAI()">Gửi</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card result-card border-success shadow-sm">
-                    <div class="card-header bg-success text-white text-center fw-bold">🎯 NHÓM AN TOÀN <br><small class="fw-normal">(Khả năng đỗ > 90%)</small></div>
+
+        <!-- CỘT KẾT QUẢ -->
+        <div class="col-lg-7">
+            <div id="result-section" style="display: none;">
+                <div class="alert alert-info py-2 shadow-sm">
+                    Khối thi mạnh nhất: <strong class="text-danger" id="khoi-toi-uu"></strong> 
+                    (Tổng điểm: <strong class="text-danger" id="tong-diem-hien-thi"></strong>)
+                </div>
+                
+                <div class="card result-card border-success shadow-sm mb-3">
+                    <div class="card-header bg-success text-white fw-bold py-2">🎯 NHÓM AN TOÀN</div>
                     <ul class="list-group list-group-flush" id="list-an-toan"></ul>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card result-card border-warning shadow-sm">
-                    <div class="card-header bg-warning text-dark text-center fw-bold">⚖️ NHÓM VỪA SỨC <br><small class="fw-normal">(Khả năng đỗ 50-70%)</small></div>
+                
+                <div class="card result-card border-warning shadow-sm mb-3">
+                    <div class="card-header bg-warning text-dark fw-bold py-2">⚖️ NHÓM VỪA SỨC</div>
                     <ul class="list-group list-group-flush" id="list-vua-suc"></ul>
                 </div>
-            </div>
-            <div class="col-md-4">
+                
                 <div class="card result-card border-danger shadow-sm">
-                    <div class="card-header bg-danger text-white text-center fw-bold">🚀 NHÓM ƯỚC MƠ <br><small class="fw-normal">(Khả năng đỗ < 40%)</small></div>
+                    <div class="card-header bg-danger text-white fw-bold py-2">🚀 NHÓM ƯỚC MƠ</div>
                     <ul class="list-group list-group-flush" id="list-uoc-mo"></ul>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- KHU VỰC 3: AI CHATBOT TƯ VẤN QUY CHẾ -->
-    <div class="card shadow-sm mt-4">
-        <div class="card-header bg-dark text-white fw-bold">2. Trợ lý AI - Giải đáp Quy chế Tuyển sinh</div>
-        <div class="card-body">
-            <div id="chatBox" class="chat-box">
-                <div class="ai-msg">👋 Chào bạn! Mình là Trợ lý AI. Mình đã nắm rõ toàn bộ quy chế xét tuyển đại học. Bạn có câu hỏi nào về điểm ưu tiên, quy đổi chứng chỉ hay luật xét tuyển không?</div>
-            </div>
-            <div id="loading" class="loading">AI đang suy nghĩ câu trả lời...</div>
-            <div class="input-group">
-                <input type="text" id="chatInput" class="form-control" placeholder="Nhập câu hỏi của bạn vào đây... (Nhấn Enter để gửi)">
-                <button class="btn btn-primary fw-bold" onclick="guiTinNhanAI()">Gửi AI</button>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    // --------------------------------------------------
-    // HÀM 1: GỬI ĐIỂM VÀ NHẬN DANH SÁCH TRƯỜNG
-    // --------------------------------------------------
     async function phanTichDiem() {
         const data = {
             toan: document.getElementById('toan').value,
@@ -92,94 +102,68 @@
             hoa: document.getElementById('hoa').value,
             sinh: document.getElementById('sinh').value,
             van: document.getElementById('van').value,
-            anh: document.getElementById('anh').value
+            anh: document.getElementById('anh').value,
+            dgnl: document.getElementById('dgnl').value,
+            ielts: document.getElementById('ielts').value
         };
 
-        try {
-            const response = await fetch('/api/analyze', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-            const result = await response.json();
+        const response = await fetch('/api/analyze', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        const result = await response.json();
 
-            // Hiển thị kết quả
-            document.getElementById('result-section').style.display = 'block';
-            document.getElementById('khoi-toi-uu').innerText = result.khoi_toi_uu;
-            document.getElementById('tong-diem-hien-thi').innerText = result.tong_diem;
+        document.getElementById('result-section').style.display = 'block';
+        document.getElementById('khoi-toi-uu').innerText = result.khoi_toi_uu;
+        document.getElementById('tong-diem-hien-thi').innerText = result.tong_diem;
 
-            const renderList = (elementId, uniArray) => {
-                const listEl = document.getElementById(elementId);
-                listEl.innerHTML = '';
-                if (uniArray.length === 0) {
-                    listEl.innerHTML = '<li class="list-group-item text-muted">Chưa tìm thấy trường phù hợp trong CSDL hiện tại.</li>';
-                } else {
-                    uniArray.forEach(uni => {
-                        listEl.innerHTML += `<li class="list-group-item"><b>${uni.name}</b> <br> <span class="badge bg-secondary">Điểm chuẩn năm ngoái: ${uni.score}</span></li>`;
-                    });
-                }
-            };
+        const renderList = (elementId, uniArray) => {
+            const listEl = document.getElementById(elementId);
+            listEl.innerHTML = '';
+            if (uniArray.length === 0) {
+                listEl.innerHTML = '<li class="list-group-item text-muted small">Không có trường phù hợp.</li>';
+            } else {
+                uniArray.forEach(uni => {
+                    // Chọn màu huy hiệu tùy theo phương thức
+                    let badgeClass = 'badge-hocba';
+                    if (uni.method.includes('ĐGNL')) badgeClass = 'badge-dgnl';
+                    if (uni.method.includes('IELTS')) badgeClass = 'badge-ielts';
 
-            renderList('list-an-toan', result.an_toan);
-            renderList('list-vua-suc', result.vua_suc);
-            renderList('list-uoc-mo', result.uoc_mo);
-            
-            // Tự động cuộn trang xuống phần kết quả
-            document.getElementById('result-section').scrollIntoView({ behavior: 'smooth' });
+                    listEl.innerHTML += `
+                        <li class="list-group-item">
+                            <strong class="text-dark">${uni.name}</strong> <br> 
+                            <span class="text-muted small">Điểm chuẩn: ${uni.score_req}</span> <br>
+                            <span class="method-badge ${badgeClass}">${uni.method}</span>
+                        </li>`;
+                });
+            }
+        };
 
-        } catch (error) {
-            alert("Đã xảy ra lỗi khi kết nối máy chủ. Vui lòng kiểm tra Terminal.");
-        }
+        renderList('list-an-toan', result.an_toan);
+        renderList('list-vua-suc', result.vua_suc);
+        renderList('list-uoc-mo', result.uoc_mo);
     }
 
-    // --------------------------------------------------
-    // HÀM 2: GỬI TIN NHẮN CHO AI VÀ NHẬN PHẢN HỒI
-    // --------------------------------------------------
     async function guiTinNhanAI() {
         const inputEl = document.getElementById('chatInput');
         const userText = inputEl.value.trim();
         if (!userText) return;
-
-        const chatBox = document.getElementById('chatBox');
-        const loadingText = document.getElementById('loading');
         
-        // Hiện tin nhắn của người dùng
+        const chatBox = document.getElementById('chatBox');
         chatBox.innerHTML += `<div class="user-msg">${userText}</div>`;
         inputEl.value = '';
         chatBox.scrollTop = chatBox.scrollHeight;
-        
-        // Hiện hiệu ứng "AI đang suy nghĩ"
-        loadingText.style.display = 'block';
 
-        try {
-            const response = await fetch('/api/chat', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: userText })
-            });
-            const result = await response.json();
-
-            // Ẩn hiệu ứng suy nghĩ
-            loadingText.style.display = 'none';
-
-            // Định dạng lại xuống dòng của AI và in ra
-            const formattedReply = result.response.replace(/\n/g, '<br>');
-            chatBox.innerHTML += `<div class="ai-msg">🤖 <strong>Cố vấn AI:</strong><br>${formattedReply}</div>`;
-            chatBox.scrollTop = chatBox.scrollHeight;
-            
-        } catch (error) {
-            loadingText.style.display = 'none';
-            chatBox.innerHTML += `<div class="ai-msg text-danger">Lỗi mạng! Không thể kết nối với AI.</div>`;
-        }
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: userText })
+        });
+        const result = await response.json();
+        chatBox.innerHTML += `<div class="ai-msg">🤖: ${result.response.replace(/\n/g, '<br>')}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
-
-    // Bắt sự kiện nhấn phím Enter để gửi tin nhắn AI nhanh hơn
-    document.getElementById("chatInput").addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            guiTinNhanAI();
-        }
-    });
 </script>
 </body>
 </html>
